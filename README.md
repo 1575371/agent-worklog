@@ -1,5 +1,7 @@
 # Agent 工作档案
 
+在线地址：<https://1575371.github.io/agent-worklog/>
+
 一个单页作品集网站，用来记录：
 
 1. 使用的 Agent：Trae、DeepSeek Harness
