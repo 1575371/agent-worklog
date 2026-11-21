@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>崔超的小站</title>
+  <meta name="description" content="崔超的小站：收集、整理并快速打开你常用的网址。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">崔</div>
+          <div class="brand-text">
+            <h1>崔超的小站</h1>
+            <p class="tagline">把值得常去的地方，收在一页里。</p>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button id="importBtn" class="btn btn-ghost" type="button">导入</button>
+          <button id="exportBtn" class="btn btn-ghost" type="button">导出</button>
+          <button id="addBtn" class="btn btn-primary" type="button">＋ 添加网址</button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+        </div>
+      </div>
+      <div class="stats" id="stats" aria-live="polite"></div>
+    </header>
+
+    <section class="toolbar" aria-label="筛选网址">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input id="searchInput" type="search" placeholder="搜索名称、网址或介绍…" autocomplete="off" aria-label="搜索网址">
+      </div>
+      <div class="chips" id="categoryChips" aria-label="按分类筛选"></div>
+    </section>
+
+    <main>
+      <div class="grid" id="linkGrid"></div>
+      <div class="empty" id="emptyState" hidden>
+        <div class="empty-icon" aria-hidden="true">✦</div>
+        <h2 id="emptyTitle">还没有收藏的网址</h2>
+        <p id="emptyDesc">点右上角「添加网址」，把第一个好地方收进来。</p>
+        <button id="emptyAddBtn" class="btn btn-primary" type="button">添加第一个网址</button>
+        <button id="loadSampleBtn" class="btn btn-ghost" type="button">载入示例数据</button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span>数据保存在你当前浏览器中，不会上传到任何服务器。</span>
+      <button id="clearAllBtn" class="link-btn" type="button">清空全部</button>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h2 id="modalTitle">添加网址</h2>
+        <button id="closeModalBtn" class="icon-btn" type="button" aria-label="关闭">×</button>
+      </div>
+      <form id="linkForm" novalidate>
+        <div class="field">
+          <label for="fName">名称 <span class="req">*</span></label>
+          <input id="fName" name="name" type="text" maxlength="60" placeholder="例如：MDN Web Docs" required>
+          <p class="field-error" id="errName" hidden>请填写名称</p>
+        </div>
+        <div class="field">
+          <label for="fUrl">网址 <span class="req">*</span></label>
+          <input id="fUrl" name="url" type="text" inputmode="url" placeholder="https://example.com" required>
+          <p class="field-error" id="errUrl" hidden>请输入有效的网址（以 http:// 或 https:// 开头）</p>
+        </div>
+        <div class="field">
+          <label for="fDesc">介绍</label>
+          <textarea id="fDesc" name="desc" rows="3" maxlength="300" placeholder="这个网站是做什么的，为什么值得收藏…"></textarea>
+        </div>
+        <div class="field">
+          <label for="fCategory">分类</label>
+          <input id="fCategory" name="category" type="text" maxlength="20" list="categoryList" placeholder="例如：工具、学习、资讯">
+          <datalist id="categoryList"></datalist>
+        </div>
+        <div class="modal-actions">
+          <button id="cancelBtn" class="btn btn-ghost" type="button">取消</button>
+          <button id="saveBtn" class="btn btn-primary" type="submit">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
