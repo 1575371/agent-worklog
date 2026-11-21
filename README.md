@@ -2,6 +2,8 @@
 
 在线地址：<https://1575371.github.io/agent-worklog/>
 
+崔超的小站（网址收藏）：<https://1575371.github.io/agent-worklog/cuichao/>
+
 一个单页作品集网站，用来记录：
 
 1. 使用的 Agent：Trae、DeepSeek Harness
@@ -54,6 +56,10 @@ Trae 和 DeepSeek Harness 的介绍是静态文案，直接在 `index.html` 中�
 ├── assets/
 │   ├── styles.css      # 全部样式、动画与响应式布局
 │   └── script.js       # 编辑模式、自动保存、导入导出
+├── cuichao/            # 崔超的小站：网址收藏管理
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
 └── README.md
 ```
 
